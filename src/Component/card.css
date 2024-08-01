@@ -76,13 +76,7 @@ p.description {
     justify-content: center;
   }
   
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-  }
+
   
   .close {
     position: absolute;
@@ -91,7 +85,19 @@ p.description {
     font-size: 24px;
     cursor: pointer;
   }
-  
+  .modal-content img {
+    width: 100%;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 503px;
+    height: 100%;
+    overflow-y: scroll;
+}
 
   @media screen and (max-width: 576px) {
    
