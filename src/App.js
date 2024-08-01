@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { movieDetail } from './Redux/movieSlice';
-import Card from './Component/Card';
 import './App.css';
+import Card from './Component/Card';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { movieDetail } from './Redux/movieSlice';
 
 function App() {
   const dispatch = useDispatch();
