@@ -1,22 +1,26 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-
-const api_key = '38ea5e7c8561a585923cb35fd520dfa3'
-export const movieDetail = createAsyncThunk('movieDetail', async (page, { rejectWithValue }) => {
-  try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&page=${page}`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+const api_key = "38ea5e7c8561a585923cb35fd520dfa3";
+export const movieDetail = createAsyncThunk(
+  "movieDetail",
+  async (page = 1, { rejectWithValue }) => {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/upcoming?api_key=${api_key}&page=${page}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      return result.results;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-    const result = await response.json();
-    return result.results;
-  } catch (error) {
-    return rejectWithValue(error.message);
   }
-});
+);
 
 const movieSlice = createSlice({
-  name: 'movie',
+  name: "movie",
   initialState: {
     movies: [],
     loading: false,
